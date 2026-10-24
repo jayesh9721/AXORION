@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AXORION website
 
-## Getting Started
+Corporate website for AXORION: web, software, AI and automation solutions.
 
-First, run the development server:
+## Stack
+- Next.js 16 (App Router, server components), React 19, TypeScript
+- Tailwind CSS 4
+- Resend (contact-form email), GA4 and Meta Pixel (loaded only after cookie consent)
 
+## Pages
+`/` Home (includes the AI agent demos) · `/services` · `/industries` · `/work` (Projects & AI demonstrations) · `/partner` · `/insights` · `/company` · `/contact` · `/privacy` · `/terms`
+
+Content lives in `src/lib/site.ts` (services, projects, stack) and `src/lib/agents.ts` (scripted AI demo conversations).
+The AI demos are simulated: no AI model is called and nothing is stored.
+
+## Develop
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # then fill in the values
+npm run dev                  # http://localhost:3000
+npm run lint && npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment variables
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (sitemap, metadata) |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number with country code, digits only |
+| `NEXT_PUBLIC_GA_ID` | GA4 measurement ID (optional) |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Pixel ID (optional) |
+| `RESEND_API_KEY` | Sends contact-form leads by email |
+| `LEAD_FROM_EMAIL` / `LEAD_TO_EMAIL` | Sender (verified domain) and recipient of leads |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy (Hostinger, Node.js web app)
+Build command `npm run build`, start command `npm start`, Node.js 20 or newer. Redirect `www` to the apex domain (or the reverse) so only one process runs.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Before launch
+Replace the placeholder WhatsApp number, set the Resend key, review the Privacy and Terms drafts with a legal professional, and test the contact form, WhatsApp buttons and cookie banner on the live domain.

@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #060912;
+  --surface: #0c1220;
+  --surface-2: #121a2e;
+  --line: #1e2a45;
+  --fg: #f2f5fb;
+  --muted: #9aa6bf;
+  --accent: #2f6bff;
+  --accent-2: #5fb0ff;
+  --glow: rgba(47, 107, 255, 0.35);
+  --on-accent: #ffffff;
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f8fd;
+  --surface: #ffffff;
+  --surface-2: #eef2fb;
+  --line: #dde4f2;
+  --fg: #0b1220;
+  --muted: #55627d;
+  --accent: #1d4ed8;
+  --accent-2: #2563eb;
+  --glow: rgba(37, 99, 235, 0.18);
+}
+
+:root[data-theme="indigo"] {
+  --bg: #0a0a18; --surface: #12122a; --surface-2: #1a1a3a; --line: #2a2a52;
+  --fg: #f1f1fb; --muted: #a3a3c4; --accent: #6366f1; --accent-2: #a5b4fc;
+  --glow: rgba(99, 102, 241, 0.35); --on-accent: #ffffff;
+}
+
+:root[data-theme="emerald"] {
+  --bg: #06130f; --surface: #0c1f19; --surface-2: #132b23; --line: #1f3d33;
+  --fg: #effaf5; --muted: #94b5a8; --accent: #10b981; --accent-2: #6ee7b7;
+  --glow: rgba(16, 185, 129, 0.3); --on-accent: #04130d;
+}
+
+:root[data-theme="gold"] {
+  --bg: #0e0e10; --surface: #17171a; --surface-2: #1f1f23; --line: #2c2c31;
+  --fg: #f6f4ee; --muted: #a8a59a; --accent: #e0a82e; --accent-2: #f5d38a;
+  --glow: rgba(224, 168, 46, 0.28); --on-accent: #1a1405;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent2: var(--accent-2);
+  --color-onaccent: var(--on-accent);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-inter), system-ui, sans-serif; overflow-x: hidden; }
+::selection { background: var(--accent); color: var(--on-accent); }
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; border-radius: 6px; }
+
+/* Component classes live in the components layer so Tailwind utilities (e.g. lg:hidden) can override them. */
+@layer components {
+  .container-x { width: 100%; max-width: 72rem; margin-inline: auto; padding-inline: 1.25rem; }
+  .section { padding-top: 4.5rem; }
+  @media (min-width: 640px) { .section { padding-top: 6.5rem; } }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; transition: border-color .2s, transform .2s, box-shadow .2s; }
+  a.card:hover, .card-hover:hover { border-color: color-mix(in srgb, var(--accent) 70%, var(--line)); transform: translateY(-3px); box-shadow: 0 18px 40px -22px var(--glow); }
+
+  .gradient-text { background: linear-gradient(90deg, var(--accent-2), var(--accent) 80%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-glow {
+    background:
+      radial-gradient(42rem 26rem at 85% 0%, var(--glow), transparent 70%),
+      radial-gradient(30rem 20rem at 0% 100%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
   }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--line) 70%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--line) 70%, transparent) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 70% 30%, #000 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 70% 30%, #000 10%, transparent 70%);
+  }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: .75rem; padding: .75rem 1.25rem; font-weight: 600; font-size: .95rem; line-height: 1.2; min-height: 2.75rem; transition: filter .2s, background .2s, transform .2s; white-space: nowrap; }
+  .btn:active { transform: scale(.98); }
+  .btn-primary { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 88%, #fff), var(--accent)); color: var(--on-accent); box-shadow: 0 8px 24px -10px var(--glow); }
+  .btn-primary:hover { filter: brightness(1.12); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--fg); background: color-mix(in srgb, var(--surface) 60%, transparent); }
+  .btn-ghost:hover { background: var(--surface-2); }
+
+  /* Comfortable thumb targets for footer links on touch screens. */
+  @media (pointer: coarse) {
+    footer li > a, footer address a, footer .social a, footer button { display: inline-flex; align-items: center; min-height: 2.5rem; }
+  }
+  .eyebrow { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); font-weight: 600; }
+  .chip { display: inline-flex; align-items: center; border: 1px solid var(--line); background: var(--surface-2); color: var(--muted); border-radius: .5rem; padding: .2rem .55rem; font-size: .75rem; }
+  .icon-box { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: .8rem; color: var(--accent-2); background: color-mix(in srgb, var(--accent) 14%, var(--surface-2)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+
+  .scroll-x { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; margin-inline: -1.25rem; padding-inline: 1.25rem; scrollbar-width: thin; }
+  .scroll-x > * { scroll-snap-align: start; flex: 0 0 min(84%, 21rem); }
+  @media (min-width: 1024px) { .scroll-x { margin-inline: 0; padding-inline: 0; } }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.float { animation: float 7s ease-in-out infinite; }
+.float-slow { animation: float 9s ease-in-out -3s infinite; }
+@keyframes float { 50% { transform: translateY(-10px); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes slideUp { from { transform: translateY(14px); } to { transform: none; } }
+/* Slide only (no opacity) so hero text is visible immediately for LCP. */
+.fade-up { animation: slideUp .6s cubic-bezier(.2,.7,.2,1) both; }
+
+/* Scroll reveal with zero JS; browsers without scroll-timeline support simply show content. */
+@supports (animation-timeline: view()) {
+  .reveal { animation: fadeUp linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
