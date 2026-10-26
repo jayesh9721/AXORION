@@ -29,7 +29,7 @@ export async function submitLead(_prev: LeadResult | null, form: FormData): Prom
   if (!key) {
     // Not configured yet: log so leads are not silently lost during setup.
     console.warn("RESEND_API_KEY missing; lead not emailed:", lead);
-    return { ok: false, error: "Our form is being set up. Please email contact@axorion.com or use WhatsApp." };
+    return { ok: false, error: "Our form is being set up. Please email support@axorion.in or use WhatsApp." };
   }
 
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
@@ -49,6 +49,6 @@ export async function submitLead(_prev: LeadResult | null, form: FormData): Prom
     }),
   });
 
-  if (!res.ok) return { ok: false, error: "Could not send your request. Please email contact@axorion.com." };
+  if (!res.ok) return { ok: false, error: "Could not send your request. Please email support@axorion.in." };
   return { ok: true };
 }

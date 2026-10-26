@@ -1,10 +1,10 @@
 export const site = {
   name: "AXORION",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://axorion.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://axorion.in",
   tagline: "Independent Digital Growth Partner",
   description:
     "AXORION engineers high-performing websites, software, mobile apps, AI automation and performance marketing for ambitious businesses.",
-  emails: ["contact@axorion.com", "support@axorion.com"],
+  emails: ["support@axorion.in"],
   phones: [
     { display: "+91 82475 37997", tel: "+918247537997" },
     { display: "+91 82172 18659", tel: "+918217218659" },
