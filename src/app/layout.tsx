@@ -35,6 +35,7 @@ const orgJsonLd = {
       name: "AXORION",
       url: site.url,
       email: site.emails[0],
+      telephone: site.phones[0].tel,
       address: {
         "@type": "PostalAddress",
         streetAddress: site.address.street,

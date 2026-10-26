@@ -20,6 +20,7 @@ export default function Contact() {
             <h2 className="font-semibold text-fg">Prefer to talk?</h2>
             <p className="mt-2"><a className="text-accent2 hover:underline" href={whatsappLink()} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></p>
             {site.emails.map((e) => <p key={e}><a className="hover:text-fg" href={`mailto:${e}`}>{e}</a></p>)}
+            {site.phones.map((p) => <p key={p.tel}><a className="hover:text-fg" href={`tel:${p.tel}`}>{p.display}</a></p>)}
           </div>
           <div className="card p-6">
             <h2 className="font-semibold text-fg">Your idea stays private</h2>

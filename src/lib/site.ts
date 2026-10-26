@@ -5,6 +5,10 @@ export const site = {
   description:
     "AXORION engineers high-performing websites, software, mobile apps, AI automation and performance marketing for ambitious businesses.",
   emails: ["contact@axorion.com", "hello@axorion.com", "support@axorion.com"],
+  phones: [
+    { display: "+91 82475 37997", tel: "+918247537997" },
+    { display: "+91 82172 18659", tel: "+918217218659" },
+  ],
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "910000000000",
   address: {
     street: "AXORION, Palamaner",

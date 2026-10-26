@@ -45,6 +45,11 @@ export default function Footer() {
                 <li key={e}><a href={`mailto:${e}`} className="hover:text-fg">{e}</a></li>
               ))}
             </ul>
+            <ul className="mt-3 space-y-1">
+              {site.phones.map((p) => (
+                <li key={p.tel}><a href={`tel:${p.tel}`} className="hover:text-fg">{p.display}</a></li>
+              ))}
+            </ul>
           </address>
           <div className="social mt-4 flex gap-3">
             {site.social.map((s) => (
