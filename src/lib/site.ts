@@ -4,7 +4,7 @@ export const site = {
   tagline: "Independent Digital Growth Partner",
   description:
     "AXORION engineers high-performing websites, software, mobile apps, AI automation and performance marketing for ambitious businesses.",
-  emails: ["contact@axorion.com", "hello@axorion.com", "support@axorion.com"],
+  emails: ["contact@axorion.com", "support@axorion.com"],
   phones: [
     { display: "+91 82475 37997", tel: "+918247537997" },
     { display: "+91 82172 18659", tel: "+918217218659" },
@@ -18,9 +18,11 @@ export const site = {
     postalCode: "517408",
   },
   social: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
-    { label: "Instagram", href: "https://www.instagram.com/" },
-    { label: "GitHub", href: "https://github.com/" },
+    { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/" },
+    { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/" },
+    { label: "X (Twitter)", icon: "x", href: "https://x.com/" },
+    { label: "GitHub", icon: "github", href: "https://github.com/" },
+    { label: "Facebook", icon: "facebook", href: "https://www.facebook.com/" },
   ],
 };
 

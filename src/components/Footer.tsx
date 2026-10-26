@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { footerNav, services, site } from "@/lib/site";
 import { CookieSettingsButton } from "./Consent";
-import { Icon } from "./icons";
+import { BrandIcon } from "./icons";
 import { Logo } from "./Header";
 
 export default function Footer() {
@@ -51,7 +51,7 @@ export default function Footer() {
               ))}
             </ul>
           </address>
-          <div className="social mt-4 flex gap-3">
+          <div className="social mt-4 flex flex-wrap gap-2.5">
             {site.social.map((s) => (
               <a
                 key={s.label}
@@ -61,7 +61,7 @@ export default function Footer() {
                 aria-label={s.label}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-line text-muted transition-colors hover:border-accent hover:text-fg"
               >
-                <Icon name={s.label.toLowerCase()} size={18} />
+                <BrandIcon name={s.icon} size={18} />
               </a>
             ))}
           </div>
