@@ -4,7 +4,7 @@ export const site = {
   tagline: "Independent Digital Growth Partner",
   description:
     "AXORION engineers high-performing websites, software, mobile apps, AI automation and performance marketing for ambitious businesses.",
-  emails: ["contact@axorion.com", "hello@axorion.com"],
+  emails: ["contact@axorion.com", "hello@axorion.com", "support@axorion.com"],
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "910000000000",
   address: {
     street: "AXORION, Palamaner",
@@ -26,10 +26,13 @@ export const nav = [
   { label: "Industries", href: "/industries" },
   { label: "Projects", href: "/work" },
   { label: "Partner", href: "/partner" },
-  { label: "Company", href: "/company" },
+  { label: "About Us", href: "/company" },
+  { label: "Blog", href: "/insights" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
-export const footerNav = [...nav.filter((n) => n.href !== "/#ai-agents"), { label: "Insights", href: "/insights" }, { label: "Contact", href: "/contact" }];
+// The footer lists every navbar link.
+export const footerNav = nav;
 
 export const whatsappLink = (text = "Hi AXORION, I'd like to discuss a project.") =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;

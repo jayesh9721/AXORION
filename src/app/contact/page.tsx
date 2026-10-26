@@ -4,15 +4,15 @@ import { PageHero } from "@/components/ui";
 import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Start a project or book a discovery call with AXORION.",
+  title: "Contact Us",
+  description: "Get a quote or book a discovery call with AXORION.",
   alternates: { canonical: "/contact" },
 };
 
 export default function Contact() {
   return (
     <>
-      <PageHero eyebrow="Contact" title={<>Tell us about <span className="gradient-text">your project.</span></>} text="Three quick steps. Tell us what you want to build and we will get back to you soon." />
+      <PageHero eyebrow="Contact Us" title={<>Tell us about <span className="gradient-text">your project.</span></>} text="Three quick steps. Tell us what you want to build and we will get back to you soon." />
       <div className="container-x grid gap-8 pt-14 lg:grid-cols-[1.4fr_1fr]">
         <ContactWizard />
         <aside className="space-y-4 text-sm text-muted">

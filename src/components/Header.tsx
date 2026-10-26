@@ -10,8 +10,8 @@ import ThemePicker, { ThemeList } from "./ThemePicker";
 
 export function Logo() {
   return (
-    <Link href="/" aria-label="AXORION home" className="flex min-h-11 items-center gap-2 text-lg font-bold tracking-tight sm:text-xl">
-      <Image src="/logo-mark.png" alt="" width={456} height={278} priority className="h-7 w-auto sm:h-8" />
+    <Link href="/" aria-label="AXORION home" className="flex min-h-11 shrink-0 items-center gap-1.5 text-base font-bold tracking-tight sm:gap-2 sm:text-xl">
+      <Image src="/logo-mark.png" alt="" width={456} height={278} priority className="h-6 w-auto sm:h-8" />
       AXORION
     </Link>
   );
@@ -27,10 +27,11 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-xl">
-      <div className="container-x flex h-16 items-center justify-between gap-3">
+    <header className="sticky top-0 z-50 border-b border-line">
+      <div className="absolute inset-0 -z-10 bg-bg/80 backdrop-blur-xl" aria-hidden />
+      <div className="container-x flex h-16 !max-w-[80rem] items-center justify-between gap-2 sm:gap-3">
         <Logo />
-        <nav className="hidden items-center gap-1 text-sm lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-0.5 text-sm xl:flex" aria-label="Main">
           {nav.map((n) => {
             const active = path === n.href || path.startsWith(`${n.href}/`);
             return (
@@ -38,7 +39,7 @@ export default function Header() {
                 key={n.href}
                 href={n.href}
                 aria-current={active ? "page" : undefined}
-                className={`rounded-lg px-3 py-2 transition-colors hover:bg-surface2 hover:text-fg ${active ? "text-fg" : "text-muted"}`}
+                className={`rounded-lg px-2.5 py-2 transition-colors hover:bg-surface2 hover:text-fg ${active ? "text-fg" : "text-muted"}`}
               >
                 {n.label}
               </Link>
@@ -46,15 +47,15 @@ export default function Header() {
           })}
         </nav>
         <div className="flex items-center gap-2">
-          <ThemePicker className="hidden lg:block" />
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost hidden !min-h-10 !py-2 xl:inline-flex">
+          <ThemePicker className="hidden xl:block" />
+          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost hidden !min-h-10 !py-2 2xl:inline-flex">
             WhatsApp
           </a>
-          <Link href="/contact" className="btn btn-primary !min-h-10 !px-4 !py-2 !text-sm">
-            Start a Project
+          <Link href="/contact" className="btn btn-primary !min-h-10 !px-3 !py-2 !text-[13px] sm:!px-4 sm:!text-sm">
+            Get a Quote
           </Link>
           <button
-            className="btn btn-ghost !min-h-10 !px-3 !py-2 lg:hidden"
+            className="btn btn-ghost !min-h-10 !px-3 !py-2 xl:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -66,7 +67,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Mobile" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-line bg-bg lg:hidden">
+        <nav id="mobile-nav" aria-label="Mobile" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-line bg-bg xl:hidden">
           <div className="container-x flex flex-col py-4">
             {nav.map((n) => (
               <Link key={n.href} href={n.href} onClick={() => setOpen(false)} className="flex items-center justify-between border-b border-line py-4 text-lg font-medium">
@@ -74,9 +75,6 @@ export default function Header() {
                 <Icon name="arrow" size={18} className="text-muted" />
               </Link>
             ))}
-            <Link href="/contact" onClick={() => setOpen(false)} className="flex items-center justify-between border-b border-line py-4 text-lg font-medium">
-              Contact <Icon name="arrow" size={18} className="text-muted" />
-            </Link>
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost mt-6 w-full">WhatsApp</a>
             <p className="mb-2 mt-6 text-xs font-semibold uppercase tracking-widest text-muted">Colour theme</p>
             <ThemeList />

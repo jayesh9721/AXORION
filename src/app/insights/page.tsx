@@ -3,7 +3,7 @@ import { CtaBanner, PageHero } from "@/components/ui";
 import { plannedTopics } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Insights",
+  title: "Blog",
   description: "Articles and guides on web engineering, AI automation and digital growth from AXORION.",
   alternates: { canonical: "/insights" },
 };
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Insights() {
   return (
     <>
-      <PageHero eyebrow="Insights" title={<>Guides and commentary, <span className="gradient-text">coming soon.</span></>} text="We are preparing practical articles on building and growing digital products." />
+      <PageHero eyebrow="Blog" title={<>Guides and commentary, <span className="gradient-text">coming soon.</span></>} text="We are preparing practical articles on building and growing digital products." />
       <div className="container-x pt-10 sm:pt-14">
         <h2 className="text-lg font-semibold">Planned topics</h2>
         <ul className="mt-4 grid gap-4 sm:grid-cols-3">

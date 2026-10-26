@@ -7,8 +7,8 @@ export default function Footer() {
   const a = site.address;
   return (
     <footer className="mt-24 border-t border-line">
-      <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
+      <div className="container-x grid grid-cols-2 gap-x-6 gap-y-8 py-12 sm:gap-10 sm:py-14 lg:grid-cols-4">
+        <div className="col-span-2 lg:col-span-1">
           <Logo />
           <p className="mt-3 text-sm text-muted">{site.tagline}. Web, software, AI &amp; automation.</p>
         </div>
@@ -32,7 +32,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <h3 className="text-sm font-semibold">Contact</h3>
           <address className="mt-3 space-y-2 text-sm not-italic text-muted">
             {site.emails.map((e) => (
@@ -53,7 +53,7 @@ export default function Footer() {
       <div className="border-t border-line">
         <div className="container-x flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} AXORION. All rights reserved.</p>
-          <p className="flex flex-wrap gap-x-5">
+          <p className="legal flex flex-wrap gap-x-5">
             <Link href="/privacy" className="hover:text-fg">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-fg">Terms</Link>
             <CookieSettingsButton />

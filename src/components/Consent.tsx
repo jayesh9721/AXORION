@@ -55,14 +55,14 @@ export default function ConsentBanner() {
         </Script>
       )}
       {consent === null && (
-        <div role="dialog" aria-label="Cookie consent" className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-2xl border border-line bg-surface p-4 shadow-2xl sm:bottom-5 sm:left-5 sm:right-auto sm:p-5">
-          <p className="text-sm text-muted">
+        <div role="dialog" aria-label="Cookie consent" className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-2xl border border-line bg-surface p-3.5 shadow-2xl sm:bottom-5 sm:left-5 sm:right-auto sm:p-5">
+          <p className="text-[13px] leading-snug text-muted sm:text-sm">
             We use optional analytics and advertising cookies to understand how the site is used. They stay off unless you accept. See our{" "}
             <a href="/privacy" className="text-accent2 underline">Privacy Policy</a>.
           </p>
-          <div className="mt-3 flex gap-2">
-            <button onClick={() => write("granted")} className="btn btn-primary !min-h-10 !px-4 !py-2 !text-sm">Accept</button>
-            <button onClick={() => write("denied")} className="btn btn-ghost !min-h-10 !px-4 !py-2 !text-sm">Decline</button>
+          <div className="mt-2.5 flex gap-2 sm:mt-3">
+            <button onClick={() => write("granted")} className="btn btn-primary !min-h-10 !px-4 !py-2 !text-sm max-sm:flex-1">Accept</button>
+            <button onClick={() => write("denied")} className="btn btn-ghost !min-h-10 !px-4 !py-2 !text-sm max-sm:flex-1">Decline</button>
           </div>
         </div>
       )}

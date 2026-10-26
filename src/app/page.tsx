@@ -22,7 +22,7 @@ export default function Home() {
               From high-performing web platforms and mobile apps to AI automation and performance marketing, AXORION engineers digital products that scale.
             </p>
             <div className="fade-up mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="btn btn-primary">Start a Project <Icon name="arrow" size={18} /></Link>
+              <Link href="/contact" className="btn btn-primary">Get a Quote <Icon name="arrow" size={18} /></Link>
               <Link href="/#ai-agents" className="btn btn-ghost">Try an AI Agent</Link>
             </div>
             <ul className="fade-up mt-8 flex flex-wrap gap-2" aria-label="Capabilities">

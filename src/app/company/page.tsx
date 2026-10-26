@@ -3,7 +3,7 @@ import { CtaBanner, PageHero } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Company",
+  title: "About Us",
   description: "AXORION is an independent digital growth and technology partner based in Palamaner, Andhra Pradesh, India.",
   alternates: { canonical: "/company" },
 };
@@ -19,7 +19,7 @@ export default function Company() {
   return (
     <>
       <PageHero
-        eyebrow="Company"
+        eyebrow="About Us"
         title={<>An independent <span className="gradient-text">digital growth and technology partner.</span></>}
         text="AXORION is an emerging technology company building web, software, AI and automation solutions for businesses."
       />

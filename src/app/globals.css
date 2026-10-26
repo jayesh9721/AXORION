@@ -94,8 +94,9 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font-inter), 
 
   /* Comfortable thumb targets for footer links on touch screens. */
   @media (pointer: coarse) {
-    footer li > a, footer address a, footer .social a, footer button { display: inline-flex; align-items: center; min-height: 2.5rem; }
+    footer li > a, footer address a, footer .social a, footer .legal a, footer .legal button { display: inline-flex; align-items: center; min-height: 2.5rem; }
   }
+  @media (max-width: 420px) { .eyebrow { letter-spacing: .1em; font-size: .68rem; } }
   .eyebrow { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); font-weight: 600; }
   .chip { display: inline-flex; align-items: center; border: 1px solid var(--line); background: var(--surface-2); color: var(--muted); border-radius: .5rem; padding: .2rem .55rem; font-size: .75rem; }
   .icon-box { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: .8rem; color: var(--accent-2); background: color-mix(in srgb, var(--accent) 14%, var(--surface-2)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
