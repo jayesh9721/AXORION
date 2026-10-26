@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { footerNav, services, site } from "@/lib/site";
 import { CookieSettingsButton } from "./Consent";
+import { Icon } from "./icons";
 import { Logo } from "./Header";
 
 export default function Footer() {
@@ -34,18 +35,29 @@ export default function Footer() {
         </div>
         <div className="col-span-2 lg:col-span-1">
           <h3 className="text-sm font-semibold">Contact</h3>
-          <address className="mt-3 space-y-2 text-sm not-italic text-muted">
-            {site.emails.map((e) => (
-              <p key={e}><a href={`mailto:${e}`} className="hover:text-fg">{e}</a></p>
-            ))}
+          <address className="mt-3 text-sm not-italic text-muted">
             <p>
               {a.street}, {a.district},<br />
               {a.region}, {a.country} – {a.postalCode}
             </p>
+            <ul className="mt-3 space-y-1">
+              {site.emails.map((e) => (
+                <li key={e}><a href={`mailto:${e}`} className="hover:text-fg">{e}</a></li>
+              ))}
+            </ul>
           </address>
-          <div className="social mt-3 flex flex-wrap gap-x-5 text-sm text-muted">
+          <div className="social mt-4 flex gap-3">
             {site.social.map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-fg">{s.label}</a>
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-line text-muted transition-colors hover:border-accent hover:text-fg"
+              >
+                <Icon name={s.label.toLowerCase()} size={18} />
+              </a>
             ))}
           </div>
         </div>
