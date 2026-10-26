@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useRef, useState } from "react";
 import { submitLead } from "@/app/contact/actions";
 import { services } from "@/lib/site";
 
@@ -11,6 +11,21 @@ const field = "w-full rounded-lg border border-line bg-surface2 px-4 py-3 text-s
 export default function ContactWizard() {
   const [state, action, pending] = useActionState(submitLead, null);
   const [step, setStep] = useState(0);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Only move on when this step's required fields are valid; otherwise show the browser's message.
+  // (Hidden steps stay mounted, so an unchecked skipped field would silently block the final submit.)
+  function next() {
+    const panel = formRef.current?.querySelectorAll<HTMLElement>("[data-step]")[step];
+    const fields = panel?.querySelectorAll<HTMLInputElement>("input, textarea, select") ?? [];
+    for (const f of fields) {
+      if (!f.checkValidity()) {
+        f.reportValidity();
+        return;
+      }
+    }
+    setStep(step + 1);
+  }
 
   if (state?.ok) {
     return (
@@ -24,7 +39,7 @@ export default function ContactWizard() {
   const titles = ["What do you need?", "Scope & timing", "About you"];
 
   return (
-    <form action={action} className="card p-6 sm:p-8">
+    <form ref={formRef} action={action} className="card p-6 sm:p-8">
       <p className="eyebrow">Step {step + 1} of 3</p>
       <h2 className="mt-1 text-xl font-semibold">{titles[step]}</h2>
       <div className="mt-2 h-1 rounded bg-surface2" aria-hidden>
@@ -32,7 +47,7 @@ export default function ContactWizard() {
       </div>
 
       {/* All steps stay mounted so FormData includes every field. */}
-      <div className={`mt-6 space-y-4 ${step === 0 ? "" : "hidden"}`}>
+      <div data-step className={`mt-6 space-y-4 ${step === 0 ? "" : "hidden"}`}>
         <label className="block text-sm">Service
           <select name="service" className={`${field} mt-1`} defaultValue={services[0].title}>
             {services.map((s) => <option key={s.slug}>{s.title}</option>)}
@@ -45,7 +60,7 @@ export default function ContactWizard() {
         </label>
       </div>
 
-      <div className={`mt-6 space-y-4 ${step === 1 ? "" : "hidden"}`}>
+      <div data-step className={`mt-6 space-y-4 ${step === 1 ? "" : "hidden"}`}>
         <label className="block text-sm">Budget
           <select name="budget" className={`${field} mt-1`}>{budgets.map((b) => <option key={b}>{b}</option>)}</select>
         </label>
@@ -54,7 +69,7 @@ export default function ContactWizard() {
         </label>
       </div>
 
-      <div className={`mt-6 space-y-4 ${step === 2 ? "" : "hidden"}`}>
+      <div data-step className={`mt-6 space-y-4 ${step === 2 ? "" : "hidden"}`}>
         <label className="block text-sm">Name
           <input name="name" required autoComplete="name" className={`${field} mt-1`} />
         </label>
@@ -74,7 +89,7 @@ export default function ContactWizard() {
           Back
         </button>
         {step < 2 ? (
-          <button type="button" onClick={() => setStep(step + 1)} className="btn btn-primary">Next</button>
+          <button type="button" onClick={next} className="btn btn-primary">Next</button>
         ) : (
           <button type="submit" disabled={pending} className="btn btn-primary disabled:opacity-60">
             {pending ? "Sending..." : "Send request"}
