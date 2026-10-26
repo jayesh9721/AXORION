@@ -11,6 +11,8 @@ const nextConfig = {
   images: { unoptimized: true },
   async redirects() {
     return [
+      // One address for the site: send www.axorion.in (any path and query) to axorion.in.
+      { source: "/:path*", has: [{ type: "host", value: "www.axorion.in" }], destination: "https://axorion.in/:path*", permanent: true },
       { source: "/about", destination: "/company", permanent: true },
       { source: "/about-us", destination: "/company", permanent: true },
       { source: "/blog", destination: "/insights", permanent: true },
