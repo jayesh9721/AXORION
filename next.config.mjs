@@ -4,6 +4,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  // Standalone output gives the host a self-contained server (.next/standalone/server.js).
+  // Skipped on Vercel, which has its own build output format.
+  output: process.env.VERCEL ? undefined : "standalone",
   // The server image optimiser needs a native program that old hosts may lack. The logo is tiny, so serve it as-is.
   images: { unoptimized: true },
   async redirects() {
