@@ -7,7 +7,7 @@
   --line: #1e2a45;
   --fg: #f2f5fb;
   --muted: #9aa6bf;
-  --accent: #2f6bff;
+  --accent: #2a62f0;
   --accent-2: #5fb0ff;
   --glow: rgba(47, 107, 255, 0.35);
   --on-accent: #ffffff;
@@ -27,7 +27,7 @@
 
 :root[data-theme="indigo"] {
   --bg: #0a0a18; --surface: #12122a; --surface-2: #1a1a3a; --line: #2a2a52;
-  --fg: #f1f1fb; --muted: #a3a3c4; --accent: #6366f1; --accent-2: #a5b4fc;
+  --fg: #f1f1fb; --muted: #a3a3c4; --accent: #5a5dec; --accent-2: #a5b4fc;
   --glow: rgba(99, 102, 241, 0.35); --on-accent: #ffffff;
 }
 
