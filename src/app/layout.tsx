@@ -29,6 +29,7 @@ const orgJsonLd = {
       url: site.url,
       email: site.emails[0],
       description: site.description,
+      sameAs: site.social.map((s) => s.href),
     },
     {
       "@type": "LocalBusiness",

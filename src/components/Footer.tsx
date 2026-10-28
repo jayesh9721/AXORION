@@ -51,6 +51,7 @@ export default function Footer() {
               ))}
             </ul>
           </address>
+          {site.social.length > 0 && (
           <div className="social mt-4 flex flex-wrap gap-2.5">
             {site.social.map((s) => (
               <a
@@ -65,6 +66,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
+          )}
         </div>
       </div>
       <div className="border-t border-line">

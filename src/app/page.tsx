@@ -4,6 +4,7 @@ import HeroVisual from "@/components/HeroVisual";
 import { Icon, industryIcons } from "@/components/icons";
 import TechTabs from "@/components/TechTabs";
 import { CtaBanner, ProjectCard, Section } from "@/components/ui";
+import { posts } from "@/lib/posts";
 import { capabilities, industries, projects, services, stack } from "@/lib/site";
 
 export default function Home() {
@@ -116,6 +117,21 @@ export default function Home() {
                 {g.items.map((t) => <span key={t} className="chip">{t}</span>)}
               </div>
             </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="From the blog" title="Guides on AI automation, AI agents and WhatsApp.">
+        <div className="grid gap-4 lg:grid-cols-3">
+          {posts.map((p) => (
+            <Link key={p.slug} href={`/insights/${p.slug}`} className="card reveal group p-6">
+              <p className="eyebrow">{p.category}</p>
+              <h3 className="mt-2 font-semibold leading-snug">{p.title}</h3>
+              <p className="mt-2 text-sm text-muted">{p.excerpt}</p>
+              <p className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent2">
+                Read article <Icon name="arrow" size={16} className="transition-transform group-hover:translate-x-1" />
+              </p>
+            </Link>
           ))}
         </div>
       </Section>

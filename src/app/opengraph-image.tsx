@@ -7,7 +7,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OgImage() {
-  const logo = await readFile(join(process.cwd(), "public", "logo-mark.png"));
+  const logo = await readFile(join(process.cwd(), "src", "assets", "logo-mark-og.png"));
   const src = `data:image/png;base64,${logo.toString("base64")}`;
   return new ImageResponse(
     (

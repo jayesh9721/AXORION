@@ -11,7 +11,7 @@ import ThemePicker, { ThemeList } from "./ThemePicker";
 export function Logo() {
   return (
     <Link href="/" aria-label="AXORION home" className="flex min-h-11 shrink-0 items-center gap-1.5 text-base font-bold tracking-tight sm:gap-2 sm:text-xl">
-      <Image src="/logo-mark.png" alt="" width={456} height={278} priority className="h-6 w-auto sm:h-8" />
+      <Image src="/logo-mark.png" alt="" width={118} height={72} priority className="h-6 w-auto sm:h-8" />
       AXORION
     </Link>
   );

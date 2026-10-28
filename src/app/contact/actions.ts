@@ -37,6 +37,8 @@ export async function submitLead(_prev: LeadResult | null, form: FormData): Prom
     .map(([k, v]) => `<li><b>${k}:</b> ${esc(v) || "-"}</li>`)
     .join("")}</ul>`;
 
+  const text = ["New enquiry from the AXORION website", "", ...Object.entries(lead).map(([k, v]) => `${k}: ${v || "-"}`)].join("\n");
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
@@ -44,8 +46,9 @@ export async function submitLead(_prev: LeadResult | null, form: FormData): Prom
       from: process.env.LEAD_FROM_EMAIL ?? "AXORION Website <onboarding@resend.dev>",
       to: [process.env.LEAD_TO_EMAIL ?? site.emails[0]],
       reply_to: lead.email,
-      subject: `New lead: ${lead.name}${lead.company ? ` (${lead.company})` : ""}`,
+      subject: `New website enquiry from ${lead.name}${lead.company ? ` (${lead.company})` : ""}`,
       html,
+      text,
     }),
   });
 

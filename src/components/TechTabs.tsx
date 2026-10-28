@@ -23,13 +23,15 @@ export default function TechTabs() {
           </button>
         ))}
       </div>
-      <ul role="tabpanel" className="mt-6 grid gap-3 sm:grid-cols-2">
-        {tab.items.map((i) => (
-          <li key={i} className="card flex items-center gap-3 p-4 text-sm">
-            <span className="text-accent2" aria-hidden>✓</span> {i}
-          </li>
-        ))}
-      </ul>
+      <div role="tabpanel" aria-label={tab.label} className="mt-6">
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {tab.items.map((i) => (
+            <li key={i} className="card flex items-center gap-3 p-4 text-sm">
+              <span className="text-accent2" aria-hidden>✓</span> {i}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

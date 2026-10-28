@@ -17,12 +17,9 @@ export const site = {
     country: "India",
     postalCode: "517408",
   },
+  // Only add a profile here once the real link exists; the footer and search data show exactly what is listed.
   social: [
-    { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/" },
-    { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/" },
-    { label: "X (Twitter)", icon: "x", href: "https://x.com/" },
-    { label: "GitHub", icon: "github", href: "https://github.com/" },
-    { label: "Facebook", icon: "facebook", href: "https://www.facebook.com/" },
+    { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/bharath-kumar-829705152" },
   ],
 };
 
@@ -151,8 +148,3 @@ export const stack = [
   { group: "Commerce & CMS", items: ["Custom CMS", "Storefront builds", "Payment integrations"] },
 ];
 
-export const plannedTopics = [
-  "Why fast websites win more enquiries",
-  "Where to start with AI automation",
-  "Choosing a web stack for a growing business",
-];
